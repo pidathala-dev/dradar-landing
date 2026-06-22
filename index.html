@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRadar — The Future of Enterprise Data & AI Governance</title>
+  <meta name="description" content="DRadar is the command center for enterprise data and AI governance. Data Lineage, AI Model Governance, Policy Automation, Compliance Reporting." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c18;
+      --bg2:       #0d1221;
+      --purple:    #8b5cf6;
+      --purple2:   #a78bfa;
+      --cyan:      #22d3ee;
+      --text:      #f1f5f9;
+      --muted:     #94a3b8;
+      --border:    rgba(139,92,246,0.25);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(8,12,24,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139,92,246,0.12);
+    }
+
+    .logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+      gap: 0;
+    }
+    .logo svg { height: 44px; width: auto; }
+
+    .nav-cta {
+      padding: 9px 22px;
+      border: 1.5px solid var(--purple);
+      border-radius: 999px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+      color: var(--text); text-transform: uppercase;
+      cursor: pointer; background: transparent;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--purple); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      gap: 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-left { display: flex; flex-direction: column; gap: 28px; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      color: var(--purple2); text-transform: uppercase;
+      background: rgba(139,92,246,0.08);
+      width: fit-content;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 6px var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1px;
+    }
+    h1 .accent { color: var(--purple); }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    /* ── EMAIL FORM ── */
+    .form-row {
+      display: flex; gap: 0;
+      max-width: 420px;
+    }
+    .form-row input {
+      flex: 1;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(139,92,246,0.35);
+      border-right: none;
+      border-radius: 10px 0 0 10px;
+      font-size: 14px; color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-row input::placeholder { color: var(--muted); }
+    .form-row input:focus { border-color: var(--purple); }
+    .form-row button {
+      padding: 14px 26px;
+      background: var(--purple);
+      border: none;
+      border-radius: 0 10px 10px 0;
+      font-size: 14px; font-weight: 700; color: #fff;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .form-row button:hover { background: #7c3aed; }
+    .form-row button:active { transform: scale(0.98); }
+
+    .form-note {
+      font-size: 12px; color: var(--muted);
+      margin-top: -16px;
+    }
+
+    /* ── WHAT'S COMING ── */
+    .features-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .features-pills {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .pill {
+      padding: 7px 16px;
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 999px;
+      font-size: 13px; color: var(--muted);
+      background: rgba(139,92,246,0.06);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: default;
+    }
+    .pill:hover {
+      border-color: var(--purple);
+      color: var(--purple2);
+      background: rgba(139,92,246,0.12);
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-msg {
+      display: none;
+      align-items: center; gap-8px;
+      padding: 14px 20px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.3);
+      border-radius: 10px;
+      font-size: 14px; color: var(--cyan);
+      max-width: 420px;
+    }
+    .success-msg.show { display: flex; }
+
+    /* ── RADAR ── */
+    .hero-right {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .radar-wrap {
+      position: relative;
+      width: min(520px, 90vw);
+      aspect-ratio: 1;
+    }
+
+    .radar-svg {
+      width: 100%; height: 100%;
+      overflow: visible;
+    }
+
+    /* Rotating sweep */
+    .sweep-group {
+      transform-origin: 50% 50%;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Blips */
+    .blip {
+      animation: blip-fade 4s ease-in-out infinite;
+    }
+    @keyframes blip-fade {
+      0%   { opacity: 0; r: 3px; }
+      10%  { opacity: 1; r: 5px; }
+      60%  { opacity: 0.7; }
+      100% { opacity: 0; r: 3px; }
+    }
+
+    /* Glow on radar circle */
+    .radar-glow {
+      filter: drop-shadow(0 0 18px rgba(139,92,246,0.4))
+              drop-shadow(0 0 36px rgba(139,92,246,0.15));
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(139,92,246,0.12);
+      padding: 24px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--muted);
+      max-width: 100%;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--purple2); }
+
+    /* ── BG GRID ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    nav, .hero, footer { position: relative; z-index: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 16px 24px; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        text-align: center;
+      }
+      .hero-left { align-items: center; }
+      .subtitle { max-width: 100%; }
+      .form-row { max-width: 100%; }
+      .features-pills { justify-content: center; }
+      .hero-right { order: -1; }
+      .radar-wrap { width: min(320px, 80vw); }
+      footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <!-- DRadar logo: [D] with gradient brackets + RADAR gradient text -->
+    <svg viewBox="0 0 220 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bracketGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a855f7"/>
+          <stop offset="100%" stop-color="#7c3aed"/>
+        </linearGradient>
+        <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#c084fc"/>
+        </linearGradient>
+        <filter id="lglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Left bracket [ -->
+      <g filter="url(#lglow)">
+        <rect x="2"  y="2"  width="4" height="38" fill="url(#bracketGrad)"/>
+        <rect x="2"  y="2"  width="14" height="4"  fill="url(#bracketGrad)"/>
+        <rect x="2"  y="36" width="14" height="4"  fill="url(#bracketGrad)"/>
+      </g>
+      <!-- Right bracket ] -->
+      <g filter="url(#lglow)">
+        <rect x="64" y="2"  width="4" height="38" fill="url(#bracketGrad)"/>
+        <rect x="52" y="2"  width="16" height="4"  fill="url(#bracketGrad)"/>
+        <rect x="52" y="36" width="16" height="4"  fill="url(#bracketGrad)"/>
+      </g>
+      <!-- D -->
+      <text x="21" y="34" font-family="Arial Black,Arial,sans-serif" font-weight="900"
+            font-size="30" fill="white" letter-spacing="-1">D</text>
+      <!-- RADAR -->
+      <text x="2" y="60" font-family="Arial,sans-serif" font-weight="700"
+            font-size="16" fill="url(#textGrad)" letter-spacing="8">RADAR</text>
+    </svg>
+  </a>
+  <button class="nav-cta" onclick="document.getElementById('email').focus()">Coming Soon</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="badge"><span class="badge-dot"></span>Coming Soon</span>
+
+    <h1>The Future of<br><span class="accent">Enterprise Data</span><br>&amp; AI Governance</h1>
+
+    <p class="subtitle">
+      We're building the command center for enterprise data and
+      AI governance. Be the first to know when we launch.
+    </p>
+
+    <div class="form-row" id="form-row">
+      <input type="email" id="email" placeholder="your@company.com" autocomplete="email" />
+      <button onclick="handleNotify()">Notify Me</button>
+    </div>
+    <div class="success-msg" id="success">
+      ✓&nbsp; You're on the list — we'll reach out when DRadar launches.
+    </div>
+    <p class="form-note">No spam. Early access for enterprise teams.</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="features-label">What's Coming</span>
+      <div class="features-pills">
+        <span class="pill">Data Lineage</span>
+        <span class="pill">AI Model Governance</span>
+        <span class="pill">Policy Automation</span>
+        <span class="pill">Compliance Reporting</span>
+        <span class="pill">Risk Intelligence</span>
+        <span class="pill">Real-time Monitoring</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RADAR -->
+  <div class="hero-right">
+    <div class="radar-wrap">
+      <svg class="radar-svg radar-glow" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Sweep gradient (conic-like via radial + mask trick) -->
+          <radialGradient id="sweepGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Glow filter for sweep line -->
+          <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="blipGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- Clipping to radar circle -->
+          <clipPath id="radarClip">
+            <circle cx="250" cy="250" r="220"/>
+          </clipPath>
+          <!-- Sweep fade mask -->
+          <mask id="sweepMask">
+            <defs>
+              <linearGradient id="fadeGrad" x1="250" y1="250" x2="470" y2="250" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect x="250" y="30" width="220" height="440" fill="url(#fadeGrad)" transform="rotate(0,250,250)"/>
+          </mask>
+        </defs>
+
+        <!-- Outer ring glow -->
+        <circle cx="250" cy="250" r="222" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.15"/>
+
+        <!-- Concentric circles -->
+        <circle cx="250" cy="250" r="220" stroke="#8b5cf6" stroke-width="1.2" stroke-opacity="0.35" stroke-dasharray="4 6"/>
+        <circle cx="250" cy="250" r="165" stroke="#8b5cf6" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 7"/>
+        <circle cx="250" cy="250" r="110" stroke="#8b5cf6" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 7"/>
+        <circle cx="250" cy="250" r="55"  stroke="#8b5cf6" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 7"/>
+
+        <!-- Cross-hair lines -->
+        <line x1="30"  y1="250" x2="470" y2="250" stroke="#8b5cf6" stroke-width="0.5" stroke-opacity="0.15"/>
+        <line x1="250" y1="30"  x2="250" y2="470" stroke="#8b5cf6" stroke-width="0.5" stroke-opacity="0.15"/>
+        <line x1="94"  y1="94"  x2="406" y2="406" stroke="#8b5cf6" stroke-width="0.4" stroke-opacity="0.1"/>
+        <line x1="406" y1="94"  x2="94"  y2="406" stroke="#8b5cf6" stroke-width="0.4" stroke-opacity="0.1"/>
+
+        <!-- Rotating sweep group -->
+        <g class="sweep-group" style="transform-origin:250px 250px">
+          <!-- Sweep fill -->
+          <path d="M250,250 L250,30 A220,220,0,0,1,470,250 Z"
+                fill="#8b5cf6" fill-opacity="0.07" clip-path="url(#radarClip)"/>
+          <!-- Sweep arm -->
+          <line x1="250" y1="250" x2="250" y2="32"
+                stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round"
+                filter="url(#lineGlow)" stroke-opacity="0.95"/>
+          <!-- Arm tip glow -->
+          <circle cx="250" cy="36" r="3" fill="#22d3ee" filter="url(#blipGlow)" opacity="0.9"/>
+        </g>
+
+        <!-- Static blips (dots at fixed positions, animated opacity/size) -->
+        <!-- blip at ~65° from top, ring 3 -->
+        <circle class="blip" cx="390" cy="118" r="5" fill="#22d3ee"
+                filter="url(#blipGlow)" style="animation-delay:0.8s"/>
+        <!-- blip at ~130°, ring 2 -->
+        <circle class="blip" cx="355" cy="365" r="4" fill="#a78bfa"
+                filter="url(#blipGlow)" style="animation-delay:2.1s"/>
+        <!-- blip at ~200°, ring 1 -->
+        <circle class="blip" cx="168" cy="308" r="3.5" fill="#22d3ee"
+                filter="url(#blipGlow)" style="animation-delay:3.2s"/>
+        <!-- blip at ~310°, ring 2 -->
+        <circle class="blip" cx="145" cy="148" r="4.5" fill="#a78bfa"
+                filter="url(#blipGlow)" style="animation-delay:1.4s"/>
+        <!-- blip at ~40°, ring 1 -->
+        <circle class="blip" cx="298" cy="92" r="3" fill="#22d3ee"
+                filter="url(#blipGlow)" style="animation-delay:0.3s"/>
+        <!-- blip at ~260°, ring 3 -->
+        <circle class="blip" cx="100" cy="264" r="5" fill="#8b5cf6"
+                filter="url(#blipGlow)" style="animation-delay:2.8s"/>
+
+        <!-- Centre dot -->
+        <circle cx="250" cy="250" r="5" fill="#8b5cf6" filter="url(#blipGlow)"/>
+        <circle cx="250" cy="250" r="2.5" fill="#fff"/>
+
+        <!-- Corner bracket decorations -->
+        <g stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.5">
+          <path d="M40,40 L40,56 M40,40 L56,40"/>
+          <path d="M460,40 L460,56 M460,40 L444,40"/>
+          <path d="M40,460 L40,444 M40,460 L56,460"/>
+          <path d="M460,460 L460,444 M460,460 L444,460"/>
+        </g>
+
+        <!-- Tiny ring labels -->
+        <text x="254" y="34" font-size="9" fill="#8b5cf6" fill-opacity="0.5" font-family="monospace">220km</text>
+        <text x="254" y="89" font-size="9" fill="#8b5cf6" fill-opacity="0.4" font-family="monospace">165km</text>
+        <text x="254" y="144" font-size="9" fill="#8b5cf6" fill-opacity="0.3" font-family="monospace">110km</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 DRadar. All rights reserved.</span>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <a href="mailto:hello@dradar.co.in">hello@dradar.co.in</a>
+    <span style="color:var(--purple);font-weight:700;letter-spacing:1px;">DRADAR.CO.IN</span>
+  </div>
+</footer>
+
+<script>
+  function handleNotify() {
+    const email = document.getElementById('email').value.trim()
+    if (!email || !email.includes('@')) {
+      document.getElementById('email').style.borderColor = '#ef4444'
+      setTimeout(() => document.getElementById('email').style.borderColor = '', 1500)
+      return
+    }
+    document.getElementById('form-row').style.display = 'none'
+    document.getElementById('success').classList.add('show')
+
+    // In production: POST to your own API / Formspree / Mailchimp
+    // fetch('/api/notify', { method:'POST', body: JSON.stringify({email}), headers:{'Content-Type':'application/json'} })
+    console.log('Notify signup:', email)
+  }
+
+  document.getElementById('email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleNotify()
+  })
+</script>
+</body>
+</html>
