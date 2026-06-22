@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DRadar — The Future of Enterprise Data & AI Governance</title>
+  <title>DRadar â€” The Future of Enterprise Data & AI Governance</title>
   <meta name="description" content="DRadar is the command center for enterprise data and AI governance. Data Lineage, AI Model Governance, Policy Automation, Compliance Reporting." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +27,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -55,7 +55,7 @@
     }
     .nav-cta:hover { background: var(--purple); color: #fff; }
 
-    /* ── HERO ── */
+    /* â”€â”€ HERO â”€â”€ */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -105,7 +105,7 @@
       max-width: 440px;
     }
 
-    /* ── EMAIL FORM ── */
+    /* â”€â”€ EMAIL FORM â”€â”€ */
     .form-row {
       display: flex; gap: 0;
       max-width: 420px;
@@ -141,7 +141,7 @@
       margin-top: -16px;
     }
 
-    /* ── WHAT'S COMING ── */
+    /* â”€â”€ WHAT'S COMING â”€â”€ */
     .features-label {
       font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
       color: var(--muted); text-transform: uppercase;
@@ -164,7 +164,7 @@
       background: rgba(139,92,246,0.12);
     }
 
-    /* ── SUCCESS STATE ── */
+    /* â”€â”€ SUCCESS STATE â”€â”€ */
     .success-msg {
       display: none;
       align-items: center; gap-8px;
@@ -177,7 +177,7 @@
     }
     .success-msg.show { display: flex; }
 
-    /* ── RADAR ── */
+    /* â”€â”€ RADAR â”€â”€ */
     .hero-right {
       display: flex; align-items: center; justify-content: center;
       position: relative;
@@ -221,7 +221,7 @@
               drop-shadow(0 0 36px rgba(139,92,246,0.15));
     }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       border-top: 1px solid rgba(139,92,246,0.12);
       padding: 24px 48px;
@@ -232,7 +232,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--purple2); }
 
-    /* ── BG GRID ── */
+    /* â”€â”€ BG GRID â”€â”€ */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0;
@@ -244,7 +244,7 @@
     }
     nav, .hero, footer { position: relative; z-index: 1; }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media (max-width: 860px) {
       nav { padding: 16px 24px; }
       .hero {
@@ -320,7 +320,7 @@
       <button onclick="handleNotify()">Notify Me</button>
     </div>
     <div class="success-msg" id="success">
-      ✓&nbsp; You're on the list — we'll reach out when DRadar launches.
+      âœ“&nbsp; You're on the list â€” we'll reach out when DRadar launches.
     </div>
     <p class="form-note">No spam. Early access for enterprise teams.</p>
 
@@ -400,25 +400,48 @@
           <circle cx="250" cy="36" r="3" fill="#22d3ee" filter="url(#blipGlow)" opacity="0.9"/>
         </g>
 
-        <!-- Static blips (dots at fixed positions, animated opacity/size) -->
-        <!-- blip at ~65° from top, ring 3 -->
-        <circle class="blip" cx="390" cy="118" r="5" fill="#22d3ee"
-                filter="url(#blipGlow)" style="animation-delay:0.8s"/>
-        <!-- blip at ~130°, ring 2 -->
-        <circle class="blip" cx="355" cy="365" r="4" fill="#a78bfa"
-                filter="url(#blipGlow)" style="animation-delay:2.1s"/>
-        <!-- blip at ~200°, ring 1 -->
-        <circle class="blip" cx="168" cy="308" r="3.5" fill="#22d3ee"
-                filter="url(#blipGlow)" style="animation-delay:3.2s"/>
-        <!-- blip at ~310°, ring 2 -->
-        <circle class="blip" cx="145" cy="148" r="4.5" fill="#a78bfa"
-                filter="url(#blipGlow)" style="animation-delay:1.4s"/>
-        <!-- blip at ~40°, ring 1 -->
-        <circle class="blip" cx="298" cy="92" r="3" fill="#22d3ee"
-                filter="url(#blipGlow)" style="animation-delay:0.3s"/>
-        <!-- blip at ~260°, ring 3 -->
-        <circle class="blip" cx="100" cy="264" r="5" fill="#8b5cf6"
-                filter="url(#blipGlow)" style="animation-delay:2.8s"/>
+        <!-- Labeled feature blips -->
+        <!-- Data Lineage ~35Â°, r=165 -->
+        <g class="blip" style="animation-delay:0.5s">
+          <circle cx="344" cy="115" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
+          <text x="351" y="114" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="start">Data Lineage</text>
+        </g>
+        <!-- AI Model Governance ~95Â°, r=110 -->
+        <g class="blip" style="animation-delay:1.8s">
+          <circle cx="359" cy="241" r="5" fill="#a78bfa" filter="url(#blipGlow)"/>
+          <text font-size="8" fill="#a78bfa" fill-opacity="0.9" font-family="monospace" text-anchor="start">
+            <tspan x="366" y="238">AI Model</tspan>
+            <tspan x="366" dy="10">Governance</tspan>
+          </text>
+        </g>
+        <!-- Policy Automation ~150Â°, r=165 -->
+        <g class="blip" style="animation-delay:0.3s">
+          <circle cx="332" cy="393" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
+          <text x="325" y="408" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="end">Policy Automation</text>
+        </g>
+        <!-- Risk Intelligence ~210Â°, r=155 -->
+        <g class="blip" style="animation-delay:2.5s">
+          <circle cx="127" cy="328" r="5" fill="#8b5cf6" filter="url(#blipGlow)"/>
+          <text x="120" y="326" font-size="8" fill="#8b5cf6" fill-opacity="0.9" font-family="monospace" text-anchor="end">Risk Intelligence</text>
+        </g>
+        <!-- Real-time Monitoring ~270Â°, r=110 -->
+        <g class="blip" style="animation-delay:1.2s">
+          <circle cx="140" cy="250" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
+          <text font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="end">
+            <tspan x="133" y="245">Real-time</tspan>
+            <tspan x="133" dy="10">Monitoring</tspan>
+          </text>
+        </g>
+        <!-- Privacy Vault ~305Â°, r=165 -->
+        <g class="blip" style="animation-delay:3.1s">
+          <circle cx="115" cy="155" r="5" fill="#a78bfa" filter="url(#blipGlow)"/>
+          <text x="122" y="153" font-size="8" fill="#a78bfa" fill-opacity="0.9" font-family="monospace" text-anchor="start">Privacy Vault</text>
+        </g>
+        <!-- Data Insights ~350Â°, r=110 -->
+        <g class="blip" style="animation-delay:0.9s">
+          <circle cx="231" cy="141" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
+          <text x="238" y="138" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="start">Data Insights</text>
+        </g>
 
         <!-- Centre dot -->
         <circle cx="250" cy="250" r="5" fill="#8b5cf6" filter="url(#blipGlow)"/>
@@ -432,10 +455,6 @@
           <path d="M460,460 L460,444 M460,460 L444,460"/>
         </g>
 
-        <!-- Tiny ring labels -->
-        <text x="254" y="34" font-size="9" fill="#8b5cf6" fill-opacity="0.5" font-family="monospace">220km</text>
-        <text x="254" y="89" font-size="9" fill="#8b5cf6" fill-opacity="0.4" font-family="monospace">165km</text>
-        <text x="254" y="144" font-size="9" fill="#8b5cf6" fill-opacity="0.3" font-family="monospace">110km</text>
       </svg>
     </div>
   </div>
@@ -443,7 +462,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 DRadar. All rights reserved.</span>
+  <span>Â© 2026 DRadar. All rights reserved.</span>
   <div style="display:flex;gap:24px;align-items:center;">
     <a href="mailto:hello@dradar.co.in">hello@dradar.co.in</a>
     <span style="color:var(--purple);font-weight:700;letter-spacing:1px;">DRADAR.CO.IN</span>
