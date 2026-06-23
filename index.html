@@ -42,7 +42,7 @@
       text-decoration: none;
       gap: 0;
     }
-    .logo svg { height: 44px; width: auto; }
+    .logo svg { height: 58px; width: auto; }
 
     .nav-cta {
       padding: 9px 22px;
@@ -268,7 +268,7 @@
 <nav>
   <a class="logo" href="#">
     <!-- DRadar logo: [D] with gradient brackets + RADAR gradient text -->
-    <svg viewBox="0 0 220 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 220 82" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bracketGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#a855f7"/>
@@ -292,12 +292,15 @@
         <rect x="52" y="2"  width="16" height="4"  fill="url(#bracketGrad)"/>
         <rect x="52" y="36" width="16" height="4"  fill="url(#bracketGrad)"/>
       </g>
-      <!-- D -->
-      <text x="21" y="34" font-family="Arial Black,Arial,sans-serif" font-weight="900"
-            font-size="30" fill="white" letter-spacing="-1">D</text>
+      <!-- D (centered in bracket: inner space x=6 to x=64, center=35) -->
+      <text x="35" y="34" font-family="Arial Black,Arial,sans-serif" font-weight="900"
+            font-size="30" fill="white" text-anchor="middle">D</text>
       <!-- RADAR -->
       <text x="2" y="60" font-family="Arial,sans-serif" font-weight="700"
             font-size="16" fill="url(#textGrad)" letter-spacing="8">RADAR</text>
+      <!-- Tagline -->
+      <text x="2" y="77" font-family="Arial,sans-serif" font-weight="700"
+            font-size="9.5" fill="#a78bfa" letter-spacing="2">DISCOVER Â· DECIDE Â· DEFEND</text>
     </svg>
   </a>
   <button class="nav-cta" onclick="document.getElementById('email').focus()">Coming Soon</button>
