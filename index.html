@@ -249,24 +249,30 @@
     body.light::before { background: radial-gradient(circle at 15% 10%,rgba(79,70,229,.1),transparent 28rem),linear-gradient(180deg,#f8f9ff,#eef2ff 70%); }
     body.light::after { background-image: linear-gradient(rgba(79,70,229,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.04) 1px,transparent 1px); }
     body.light nav { background: rgba(255,255,255,.95); border-bottom-color: rgba(79,70,229,.15); }
-    body.light nav a { color: #374151; }
+    /* !important overrides inline style= on nav links */
+    body.light nav a { color: #374151 !important; }
+    body.light nav a:hover { color: #4f46e5 !important; }
+    body.light .logo-d { fill: #1e1b4b; }
+    body.light .logo-tagline { fill: #6b7280; }
     body.light h1 { color: #1e1b4b; }
     body.light h1 .accent { color: #4f46e5; }
-    body.light .subtitle { color: #64748b; }
+    body.light .subtitle { color: #374151; }
     body.light .badge { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.25); color: #4f46e5; }
     body.light .badge-dot { background: #4f46e5; box-shadow: 0 0 6px #4f46e5; }
-    body.light .features-label { color: #64748b; }
+    body.light .features-label { color: #374151; font-weight: 800; }
     body.light .pill { border-color: rgba(79,70,229,.25); color: #374151; background: rgba(79,70,229,.05); }
     body.light .pill:hover { border-color: #4f46e5; color: #4f46e5; background: rgba(79,70,229,.1); }
     body.light .form-row input { background: #fff; border-color: rgba(79,70,229,.35); color: #1e1b4b; }
+    body.light .form-row input::placeholder { color: #94a3b8; }
     body.light .form-row button { background: #4f46e5; }
     body.light .form-row button:hover { background: #4338ca; }
     body.light .form-note { color: #64748b; }
     body.light footer { border-top-color: rgba(79,70,229,.14); color: #64748b; }
     body.light footer a { color: #64748b; }
     body.light footer a:hover { color: #4f46e5; }
-    body.light .nav-cta { border-color: rgba(79,70,229,.4); color: #4f46e5; }
-    body.light .nav-cta:hover { background: #4f46e5; color: #fff; }
+    body.light .nav-cta { border-color: rgba(79,70,229,.4); color: #4f46e5 !important; }
+    body.light .nav-cta:hover { background: #4f46e5; color: #fff !important; }
+    body.light .success-msg { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.3); color: #4f46e5; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
@@ -314,11 +320,11 @@
         <rect x="52" y="36" width="16" height="4"  fill="url(#bracketGrad)"/>
       </g>
       <text x="35" y="34" font-family="Arial Black,Arial,sans-serif" font-weight="900"
-            font-size="30" fill="white" text-anchor="middle">D</text>
+            font-size="30" fill="white" text-anchor="middle" class="logo-d">D</text>
       <text x="2" y="60" font-family="Arial,sans-serif" font-weight="700"
             font-size="16" fill="url(#textGrad)" letter-spacing="8">RADAR</text>
       <text x="2" y="77" font-family="Arial,sans-serif" font-weight="700"
-            font-size="9.5" fill="#a78bfa" letter-spacing="2">DISCOVER  |  DECIDE  |  DEFEND</text>
+            font-size="9.5" fill="#a78bfa" letter-spacing="2" class="logo-tagline">DISCOVER  |  DECIDE  |  DEFEND</text>
     </svg>
   </a>
   <div style="display:flex;align-items:center;gap:20px;">
@@ -341,8 +347,7 @@
     <h1>The Future of<br><span class="accent">Enterprise Data</span><br>&amp; AI Governance</h1>
 
     <p class="subtitle">
-      We're building the command center for enterprise data and
-      AI governance. Be the first to know when we launch.
+      Unify sensitive data discovery, AI governance, regulatory evidence, and risk remediation into one enterprise-ready command center.
     </p>
 
     <div class="form-row" id="form-row">
