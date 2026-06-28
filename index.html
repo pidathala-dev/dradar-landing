@@ -464,9 +464,9 @@
       setTimeout(() => document.getElementById('email').style.borderColor = '', 1500)
       return
     }
+    window.location.href = 'mailto:hello@dradar.in?subject=Early%20Access%20Request&body=Email%3A%20' + encodeURIComponent(email)
     document.getElementById('form-row').style.display = 'none'
     document.getElementById('success').classList.add('show')
-    console.log('Notify signup:', email)
   }
 
   document.getElementById('email').addEventListener('keydown', e => {
