@@ -274,6 +274,7 @@
     body.light .nav-cta:hover { background: #4f46e5; color: #fff !important; }
     body.light .success-msg { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.3); color: #4f46e5; }
     body.light .radar-svg text { fill: #1e1b4b !important; fill-opacity: 1 !important; }
+    body.light .blip g text { fill: #1e1b4b !important; fill-opacity: 1 !important; }
     body.light .blip { opacity: 0.9; }
 
     /* ── RESPONSIVE ── */
@@ -324,7 +325,7 @@
       <text x="35" y="34" font-family="Arial Black,Arial,sans-serif" font-weight="900"
             font-size="36" fill="white" text-anchor="middle" class="logo-d">D</text>
       <text x="2" y="60" font-family="Arial,sans-serif" font-weight="700"
-            font-size="16" fill="url(#textGrad)" letter-spacing="8">RADAR</text>
+            font-size="14" fill="url(#textGrad)" letter-spacing="6">[D]-RADAR</text>
       <text x="2" y="77" font-family="Arial,sans-serif" font-weight="700"
             font-size="9.5" fill="#a78bfa" letter-spacing="2" class="logo-tagline">DISCOVER  |  DECIDE  |  DEFEND</text>
     </svg>
@@ -422,7 +423,7 @@
         <!-- Sensitive Data Discovery ~35°: delay=0.58s, r=165 -->
         <g class="blip" style="animation-delay:0.58s">
           <circle cx="344" cy="115" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
-          <text x="351" y="114" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="start">Sensitive Data</text>
+          <text x="351" y="114" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="start" class="rl">Sensitive Data</text>
         </g>
 
         <!-- AI Governance ~95°: delay=1.58s, r=110 -->
@@ -437,13 +438,13 @@
         <!-- Policy Automation ~150°: delay=2.50s, r=165 -->
         <g class="blip" style="animation-delay:2.50s">
           <circle cx="332" cy="393" r="5" fill="#22d3ee" filter="url(#blipGlow)"/>
-          <text x="325" y="408" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="end">Policy Automation</text>
+          <text x="325" y="408" font-size="8" fill="#22d3ee" fill-opacity="0.9" font-family="monospace" text-anchor="end" class="rl">Policy Automation</text>
         </g>
 
         <!-- Risk Intelligence ~210°: delay=3.50s, r=155 -->
         <g class="blip" style="animation-delay:3.50s">
           <circle cx="127" cy="328" r="5" fill="#8b5cf6" filter="url(#blipGlow)"/>
-          <text x="120" y="326" font-size="8" fill="#8b5cf6" fill-opacity="0.9" font-family="monospace" text-anchor="end">Risk Intelligence</text>
+          <text x="120" y="326" font-size="8" fill="#8b5cf6" fill-opacity="0.9" font-family="monospace" text-anchor="end" class="rl">Risk Intelligence</text>
         </g>
 
         <!-- Real-time Monitoring ~270°: delay=4.50s, r=110 -->
@@ -458,7 +459,7 @@
         <!-- Compliance Reporting ~305°: delay=5.08s, r=165 -->
         <g class="blip" style="animation-delay:5.08s">
           <circle cx="115" cy="155" r="5" fill="#a78bfa" filter="url(#blipGlow)"/>
-          <text x="122" y="153" font-size="8" fill="#a78bfa" fill-opacity="0.9" font-family="monospace" text-anchor="start">Compliance</text>
+          <text x="122" y="153" font-size="8" fill="#a78bfa" fill-opacity="0.9" font-family="monospace" text-anchor="start" class="rl">Compliance</text>
         </g>
 
         <!-- Centre dot -->
