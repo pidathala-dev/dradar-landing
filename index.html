@@ -244,6 +244,30 @@
     }
     nav, .hero, footer { position: relative; z-index: 1; }
 
+    /* ── LIGHT MODE ── */
+    body.light { background: #f8f9ff; color: #1e1b4b; }
+    body.light::before { background: radial-gradient(circle at 15% 10%,rgba(79,70,229,.1),transparent 28rem),linear-gradient(180deg,#f8f9ff,#eef2ff 70%); }
+    body.light::after { background-image: linear-gradient(rgba(79,70,229,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.04) 1px,transparent 1px); }
+    body.light nav { background: rgba(255,255,255,.95); border-bottom-color: rgba(79,70,229,.15); }
+    body.light nav a { color: #374151; }
+    body.light h1 { color: #1e1b4b; }
+    body.light h1 .accent { color: #4f46e5; }
+    body.light .subtitle { color: #64748b; }
+    body.light .badge { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.25); color: #4f46e5; }
+    body.light .badge-dot { background: #4f46e5; box-shadow: 0 0 6px #4f46e5; }
+    body.light .features-label { color: #64748b; }
+    body.light .pill { border-color: rgba(79,70,229,.25); color: #374151; background: rgba(79,70,229,.05); }
+    body.light .pill:hover { border-color: #4f46e5; color: #4f46e5; background: rgba(79,70,229,.1); }
+    body.light .form-row input { background: #fff; border-color: rgba(79,70,229,.35); color: #1e1b4b; }
+    body.light .form-row button { background: #4f46e5; }
+    body.light .form-row button:hover { background: #4338ca; }
+    body.light .form-note { color: #64748b; }
+    body.light footer { border-top-color: rgba(79,70,229,.14); color: #64748b; }
+    body.light footer a { color: #64748b; }
+    body.light footer a:hover { color: #4f46e5; }
+    body.light .nav-cta { border-color: rgba(79,70,229,.4); color: #4f46e5; }
+    body.light .nav-cta:hover { background: #4f46e5; color: #fff; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 16px 24px; }
@@ -297,13 +321,14 @@
             font-size="9.5" fill="#a78bfa" letter-spacing="2">DISCOVER  |  DECIDE  |  DEFEND</text>
     </svg>
   </a>
-  <div style="display:flex;align-items:center;gap:28px;">
+  <div style="display:flex;align-items:center;gap:20px;">
     <a href="platform.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Platform</a>
     <a href="solutions.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Solutions</a>
     <a href="use-cases.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Use Cases</a>
     <a href="compliance.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Compliance</a>
     <a href="resources.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Resources</a>
     <a href="about.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">About</a>
+    <button id="theme-toggle" class="nav-cta" style="font-size:12px;">☀ Light</button>
     <button class="nav-cta" onclick="document.getElementById('email').focus()">Coming Soon</button>
   </div>
 </nav>
@@ -471,6 +496,22 @@
   document.getElementById('email').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleNotify()
   })
+
+  ;(function() {
+    const btn = document.getElementById('theme-toggle')
+    function applyTheme(light) {
+      document.body.classList.toggle('light', light)
+      if (btn) btn.textContent = light ? '🌑 Dark' : '☀ Light'
+    }
+    applyTheme(localStorage.getItem('theme') === 'light')
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const isLight = !document.body.classList.contains('light')
+        applyTheme(isLight)
+        localStorage.setItem('theme', isLight ? 'light' : 'dark')
+      })
+    }
+  })()
 </script>
 </body>
 </html>

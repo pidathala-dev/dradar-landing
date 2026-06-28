@@ -13,3 +13,20 @@ for (const form of document.querySelectorAll('form')) {
     if (button) button.textContent = 'Thanks — we will be in touch';
   });
 }
+
+// Theme toggle
+(function() {
+  const btn = document.getElementById('theme-toggle');
+  function applyTheme(light) {
+    document.body.classList.toggle('light', light);
+    if (btn) btn.textContent = light ? '🌑 Dark' : '☀ Light';
+  }
+  applyTheme(localStorage.getItem('theme') === 'light');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const isLight = !document.body.classList.contains('light');
+      applyTheme(isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  }
+})();
