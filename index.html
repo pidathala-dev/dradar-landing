@@ -272,13 +272,40 @@
     body.light footer a:hover { color: #4f46e5; }
     body.light .nav-cta { border-color: rgba(79,70,229,.4); color: #4f46e5 !important; }
     body.light .nav-cta:hover { background: #4f46e5; color: #fff !important; }
+    body.light .ham-btn { border-color: rgba(79,70,229,.4); color: #4f46e5; }
+    body.light .nav-links-home { background: rgba(255,255,255,.97); border-bottom-color: rgba(79,70,229,.15); }
+    body.light .nav-links-home a { border-bottom-color: rgba(79,70,229,.08); }
     body.light .success-msg { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.3); color: #4f46e5; }
     body.light .radar-svg text { fill: #0f172a !important; fill-opacity: 1 !important; }
     body.light .blip { opacity: 1 !important; animation: none !important; }
 
+    /* ── HAMBURGER ── */
+    .nav-links-home { display: flex; align-items: center; gap: 20px; }
+    .ham-btn {
+      display: none; background: transparent; border: 1px solid rgba(139,92,246,.35);
+      color: #a78bfa; border-radius: 10px; padding: 8px 10px; cursor: pointer;
+      line-height: 0; transition: .2s;
+    }
+    .ham-btn:hover { background: rgba(139,92,246,.12); }
+    .nav-actions-home { display: flex; align-items: center; gap: 10px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 16px 24px; }
+      .nav-links-home {
+        display: none; flex-direction: column; align-items: stretch;
+        position: fixed; top: 66px; left: 0; right: 0;
+        background: rgba(8,12,24,.97); backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(139,92,246,.2);
+        padding: 8px 0; z-index: 99;
+      }
+      .nav-links-home.open { display: flex; }
+      .nav-links-home a {
+        padding: 14px 24px !important; font-size: 15px !important;
+        border-bottom: 1px solid rgba(139,92,246,.08);
+      }
+      .nav-links-home a:last-child { border-bottom: none; }
+      .ham-btn { display: inline-flex; }
       .hero {
         grid-template-columns: 1fr;
         padding: 80px 24px 60px;
@@ -329,15 +356,20 @@
             font-size="12" fill="white" letter-spacing="2" class="logo-tagline">DISCOVER  |  DECIDE  |  DEFEND</text>
     </svg>
   </a>
-  <div style="display:flex;align-items:center;gap:20px;">
-    <a href="platform.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Platform</a>
-    <a href="solutions.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Solutions</a>
-    <a href="use-cases.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Use Cases</a>
-    <a href="compliance.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Compliance</a>
-    <a href="resources.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Resources</a>
-    <a href="about.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">About</a>
+  <div class="nav-actions-home">
+    <nav id="index-nav-links" class="nav-links-home">
+      <a href="platform.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Platform</a>
+      <a href="solutions.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Solutions</a>
+      <a href="use-cases.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Use Cases</a>
+      <a href="compliance.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Compliance</a>
+      <a href="resources.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">Resources</a>
+      <a href="about.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">About</a>
+    </nav>
     <button id="theme-toggle" class="nav-cta" style="font-size:12px;">☀ Light</button>
     <button class="nav-cta" onclick="document.getElementById('email').focus()">Coming Soon</button>
+    <button id="ham-btn" class="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="index-nav-links">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -497,6 +529,29 @@
   document.getElementById('email').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleNotify()
   })
+
+  // Home page hamburger
+  ;(function() {
+    const hamBtn = document.getElementById('ham-btn')
+    const navLinks = document.getElementById('index-nav-links')
+    if (!hamBtn || !navLinks) return
+    const HAM = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
+    const X = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>'
+    function closeMenu() {
+      navLinks.classList.remove('open')
+      hamBtn.setAttribute('aria-expanded', 'false')
+      hamBtn.innerHTML = HAM
+    }
+    hamBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open')
+      hamBtn.setAttribute('aria-expanded', String(open))
+      hamBtn.innerHTML = open ? X : HAM
+    })
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu))
+    document.addEventListener('click', e => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !hamBtn.contains(e.target)) closeMenu()
+    })
+  })()
 
   ;(function() {
     const btn = document.getElementById('theme-toggle')
