@@ -328,6 +328,26 @@
     body.light .vm-card strong { color: #1e1b4b; }
     body.light .vm-card p { color: #374151; }
 
+    /* ── NOTIFY SECTION ── */
+    .notify-section {
+      padding: 72px 48px;
+      border-top: 1px solid rgba(139,92,246,.15);
+    }
+    .notify-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .notify-heading {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 900;
+      color: #fff; line-height: 1.1; letter-spacing: -1px; margin: 0 0 10px;
+    }
+    .notify-sub { font-size: 16px; color: var(--muted); line-height: 1.6; }
+    .notify-form-wrap { flex: 1; min-width: 280px; max-width: 440px; display: flex; flex-direction: column; gap: 10px; }
+    body.light .notify-heading { color: #1e1b4b; }
+    body.light .notify-sub { color: #374151; }
+    body.light .notify-section { border-top-color: rgba(79,70,229,.15); }
+
     /* ── HAMBURGER ── */
     .nav-links-home { display: flex; align-items: center; gap: 20px; }
     .ham-btn {
@@ -369,6 +389,9 @@
       .radar-wrap { width: min(320px, 80vw); }
       footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
       .vm-section { padding: 52px 24px; }
+      .notify-section { padding: 52px 24px; }
+      .notify-inner { flex-direction: column; align-items: flex-start; }
+      .notify-form-wrap { max-width: 100%; width: 100%; }
       .vm-inner { grid-template-columns: 1fr; gap: 48px; }
       .vm-divider { display: none; }
       .vm-body { max-width: 100%; }
@@ -437,15 +460,6 @@
     <p class="subtitle">
       Unify sensitive data discovery, AI governance, regulatory evidence, and risk remediation into one enterprise-ready command center.
     </p>
-
-    <div class="form-row" id="form-row">
-      <input type="email" id="email" placeholder="your@company.com" autocomplete="email" />
-      <button onclick="handleNotify()">Notify Me</button>
-    </div>
-    <div class="success-msg" id="success">
-      ✓&nbsp; You're on the list — we'll reach out when D-Radar launches.
-    </div>
-    <p class="form-note">No spam. Early access for enterprise teams.</p>
 
     <div style="display:flex;flex-direction:column;gap:12px">
       <span class="features-label">What's Coming</span>
@@ -558,7 +572,7 @@
   </div>
 </section>
 
-<!-- VISION / MISSION -->
+<!-- VISION / MISSION (moved up, right after hero) -->
 <section class="vm-section">
   <div class="vm-inner">
 
@@ -594,6 +608,27 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- NOTIFY SECTION -->
+<section class="notify-section">
+  <div class="notify-inner">
+    <div class="notify-text">
+      <span class="badge" style="margin-bottom:16px"><span class="badge-dot"></span>Coming Soon</span>
+      <h2 class="notify-heading">Be first in line</h2>
+      <p class="notify-sub">Get early access when D-Radar launches for enterprise teams.</p>
+    </div>
+    <div class="notify-form-wrap">
+      <div class="form-row" id="form-row">
+        <input type="email" id="email" placeholder="your@company.com" autocomplete="email" />
+        <button onclick="handleNotify()">Notify Me</button>
+      </div>
+      <div class="success-msg" id="success">
+        ✓&nbsp; You're on the list — we'll reach out when D-Radar launches.
+      </div>
+      <p class="form-note">No spam. Early access for enterprise teams.</p>
+    </div>
   </div>
 </section>
 
