@@ -294,6 +294,7 @@
       font-size: 11px; font-weight: 700; letter-spacing: 3px;
       text-transform: uppercase; display: block; margin-bottom: 20px;
     }
+    .vm-label-vision, .vm-label-mission { color: var(--cyan); }
     .vm-heading {
       font-size: clamp(28px, 3.5vw, 46px); font-weight: 900;
       color: #fff; line-height: 1.1; letter-spacing: -1px; margin: 0;
@@ -320,15 +321,16 @@
     .vm-card p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
 
     /* light mode */
-    body.light .vm-section { background: #eef2ff !important; border-color: rgba(79,70,229,.15); }
-    body.light .vm-label { color: #4f46e5 !important; }
-    body.light .vm-heading { color: #1e1b4b !important; }
-    body.light .vm-rule { background: #4f46e5 !important; }
-    body.light .vm-body { color: #374151 !important; }
+    body.light .vm-section { background: #eef2ff; border-color: rgba(79,70,229,.15); }
+    body.light .vm-label-vision,
+    body.light .vm-label-mission { color: #4f46e5; }
+    body.light .vm-heading { color: #1e1b4b; }
+    body.light .vm-rule { background: #4f46e5; }
+    body.light .vm-body { color: #374151; }
     body.light .vm-divider { background: rgba(79,70,229,.2); }
-    body.light .vm-card { background: rgba(79,70,229,.08) !important; }
-    body.light .vm-card strong { color: #1e1b4b !important; }
-    body.light .vm-card p { color: #374151 !important; }
+    body.light .vm-card { background: rgba(79,70,229,.08); }
+    body.light .vm-card strong { color: #1e1b4b; }
+    body.light .vm-card p { color: #374151; }
 
     /* ── NOTIFY SECTION ── */
     .notify-section {
@@ -580,7 +582,7 @@
 
     <!-- LEFT: VISION -->
     <div class="vm-vision">
-      <span class="vm-label" style="color:var(--cyan)">V I S I O N</span>
+      <span class="vm-label vm-label-vision">V I S I O N</span>
       <h2 class="vm-heading">The Global Enterprise Trust Layer</h2>
       <div class="vm-rule"></div>
       <p class="vm-body">Regulatory obligation across any jurisdiction is not checked but computed. Sensitive data is not managed but governed — continuously, automatically, at scale.</p>
@@ -591,7 +593,7 @@
 
     <!-- RIGHT: MISSION -->
     <div class="vm-mission">
-      <span class="vm-label" style="color:var(--cyan)">M I S S I O N</span>
+      <span class="vm-label vm-label-mission">M I S S I O N</span>
       <h2 class="vm-heading">Make Compliance a Computed Property</h2>
       <div class="vm-rule" style="background:var(--purple)"></div>
       <div class="vm-cards">
