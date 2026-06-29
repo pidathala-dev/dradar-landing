@@ -306,6 +306,7 @@
       }
       .nav-links-home a:last-child { border-bottom: none; }
       .ham-btn { display: inline-flex; }
+      .nav-cta-coming-soon { display: none; }
       .hero {
         grid-template-columns: 1fr;
         padding: 80px 24px 60px;
@@ -366,7 +367,7 @@
       <a href="about.html" style="font-size:13px;color:#cbd5e1;text-decoration:none;font-weight:500;">About</a>
     </nav>
     <button id="theme-toggle" class="nav-cta" style="font-size:12px;">☀ Light</button>
-    <button class="nav-cta" onclick="document.getElementById('email').focus()">Coming Soon</button>
+    <button class="nav-cta nav-cta-coming-soon" onclick="document.getElementById('email').focus()">Coming Soon</button>
     <button id="ham-btn" class="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="index-nav-links">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
