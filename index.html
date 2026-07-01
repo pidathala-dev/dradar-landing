@@ -137,7 +137,7 @@
 
     .form-note {
       font-size: 12px; color: var(--muted);
-      margin-top: -16px;
+      margin-top: 6px;
     }
 
     /* ── WHAT'S COMING ── */
@@ -358,7 +358,7 @@
     .ham-btn {
       display: none; background: transparent; border: 1px solid rgba(139,92,246,.35);
       color: #a78bfa; border-radius: 10px; padding: 8px 10px; cursor: pointer;
-      line-height: 0; transition: .2s;
+      line-height: 0; transition: .2s; touch-action: manipulation;
     }
     .ham-btn:hover { background: rgba(139,92,246,.12); }
     .nav-actions-home { display: flex; align-items: center; gap: 10px; }
@@ -676,7 +676,8 @@
       hamBtn.setAttribute('aria-expanded', 'false')
       hamBtn.innerHTML = HAM
     }
-    hamBtn.addEventListener('click', () => {
+    hamBtn.addEventListener('click', e => {
+      e.stopPropagation()
       const open = navLinks.classList.toggle('open')
       hamBtn.setAttribute('aria-expanded', String(open))
       hamBtn.innerHTML = open ? X : HAM
