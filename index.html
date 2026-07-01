@@ -186,6 +186,7 @@
       position: relative;
       width: min(520px, 90vw);
       aspect-ratio: 1;
+      isolation: isolate;
     }
 
     .radar-svg {
@@ -249,6 +250,7 @@
     body.light::before { background: radial-gradient(circle at 15% 10%,rgba(79,70,229,.1),transparent 28rem),linear-gradient(180deg,#f8f9ff,#eef2ff 70%); }
     body.light::after { background-image: linear-gradient(rgba(79,70,229,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.04) 1px,transparent 1px); }
     body.light nav { background: rgba(255,255,255,.95); border-bottom-color: rgba(79,70,229,.15); }
+    @media (max-width: 1024px) { body.light nav { background: rgba(255,255,255,1); backdrop-filter: none; } body.light .nav-links-home { background: rgba(255,255,255,1); } }
     /* !important overrides inline style= on nav links */
     body.light nav a { color: #374151 !important; }
     body.light nav a:hover { color: #4f46e5 !important; }
@@ -273,7 +275,7 @@
     body.light .nav-cta { border-color: rgba(79,70,229,.4); color: #4f46e5 !important; }
     body.light .nav-cta:hover { background: #4f46e5; color: #fff !important; }
     body.light .ham-btn { border-color: rgba(79,70,229,.4); color: #4f46e5; }
-    body.light .nav-links-home { background: rgba(255,255,255,.97); border-bottom-color: rgba(79,70,229,.15); }
+    body.light .nav-links-home { background: rgba(255,255,255,1); border-bottom-color: rgba(79,70,229,.15); }
     body.light .nav-links-home a { border-bottom-color: rgba(79,70,229,.08); }
     body.light .success-msg { background: rgba(79,70,229,.08); border-color: rgba(79,70,229,.3); color: #4f46e5; }
     body.light .radar-svg text { fill: #0f172a !important; fill-opacity: 1 !important; }
@@ -353,6 +355,11 @@
     body.light .notify-sub { color: #374151; }
     body.light .notify-section { border-top-color: rgba(79,70,229,.15); }
 
+    /* Hide radar while mobile menu is open to prevent GPU layer bleed-through */
+    body.menu-open .sweep-group,
+    body.menu-open .blip { animation-play-state: paused; }
+    body.menu-open .radar-wrap { visibility: hidden; }
+
     /* ── HAMBURGER ── */
     .nav-links-home { display: flex; align-items: center; gap: 20px; }
     .ham-btn {
@@ -365,13 +372,13 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      nav { padding: 16px 24px; }
+      nav { padding: 16px 24px; background: rgba(8,12,24,.98); backdrop-filter: none; }
       .nav-links-home {
         display: none; flex-direction: column; align-items: stretch;
-        position: fixed; top: 66px; left: 0; right: 0;
-        background: rgba(8,12,24,.97); backdrop-filter: blur(16px);
+        position: absolute; top: 100%; left: -24px; right: -24px;
+        background: #080c18;
         border-bottom: 1px solid rgba(139,92,246,.2);
-        padding: 8px 0; z-index: 99;
+        padding: 8px 0; z-index: 9999;
       }
       .nav-links-home.open { display: flex; }
       .nav-links-home a {
@@ -675,12 +682,14 @@
       navLinks.classList.remove('open')
       hamBtn.setAttribute('aria-expanded', 'false')
       hamBtn.innerHTML = HAM
+      document.body.classList.remove('menu-open')
     }
     hamBtn.addEventListener('click', e => {
       e.stopPropagation()
       const open = navLinks.classList.toggle('open')
       hamBtn.setAttribute('aria-expanded', String(open))
       hamBtn.innerHTML = open ? X : HAM
+      document.body.classList.toggle('menu-open', open)
     })
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu))
     document.addEventListener('click', e => {
