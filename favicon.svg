@@ -1,0 +1,25 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#080c18"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <!-- Left bracket -->
+  <rect x="6"  y="8"  width="3" height="30" fill="url(#bg)"/>
+  <rect x="6"  y="8"  width="10" height="3"  fill="url(#bg)"/>
+  <rect x="6"  y="35" width="10" height="3"  fill="url(#bg)"/>
+  <!-- Right bracket -->
+  <rect x="55" y="8"  width="3" height="30" fill="url(#bg)"/>
+  <rect x="48" y="8"  width="10" height="3"  fill="url(#bg)"/>
+  <rect x="48" y="35" width="10" height="3"  fill="url(#bg)"/>
+  <!-- D -->
+  <text x="32" y="37" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">D</text>
+  <!-- RADAR -->
+  <text x="9" y="54" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="url(#rg)" letter-spacing="4.5">RADAR</text>
+</svg>
